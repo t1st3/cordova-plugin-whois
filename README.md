@@ -7,6 +7,10 @@ This plugin implements the client side of the Internet Whois Protocol defined in
 
 ## Installation
 
+> cordova plugin add cordova-plugin-whois
+
+or
+
 > cordova plugin add https://github.com/t1st3/cordova-plugin-whois.git
 
 ## Usage
