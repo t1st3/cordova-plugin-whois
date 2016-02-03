@@ -92,3 +92,7 @@ Results look like this:
 ## License
 
 This project is licensed under the [MIT license](https://opensource.org/licenses/MIT). Check the [LICENSE.md file](https://github.com/t1st3/cordova-plugin-whois/blob/master/LICENSE.md).
+
+## Dependencies
+
+For the Android part, this project depends on [Apache Commons Net 3.4](https://commons.apache.org/proper/commons-net/), which is distributed under the [Apache 2.0 license](http://www.apache.org/licenses/LICENSE-2.0).
