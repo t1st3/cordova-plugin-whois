@@ -4,7 +4,7 @@
     id="cordova-plugin-whois-tests"
     version="0.1.0">
     <name>Whois Tests</name>
-    <license>Apache 2.0</license>
+    <license>MIT</license>
 
     <js-module src="tests.js" name="tests">
     </js-module>
