@@ -15,7 +15,7 @@ or
 
 ## Usage
 
-This plugin defines a global `whois` object.
+This plugin defines a global `Whois` object.
 Although the object is in the global scope, it is not available until after the `deviceready` event.
 
 ### Usage with default whois server
@@ -25,10 +25,16 @@ The whois server `whois.internic.net` will be used if no whois server is specifi
 ```js
 document.addEventListener('deviceready', onDeviceReady, false);
 function onDeviceReady() {
-  var w = new whois(['wikipedia.com']);
-  setTimeout(function () {
-    console.log(w.results);
-  }, 5000);
+  var w, success, err, queries;
+  queries = ['wikipedia.com'];
+  success = function (results) {
+    console.log(results);
+  };
+  err = function (e) {
+    console.log('Error: ' + e);
+  };
+  w = new Whois();
+  p.whois(queries, success, err);
 }
 ```
 
@@ -39,10 +45,16 @@ You can query a specific whois server. Here is an example query to the whois ser
 ```js
 document.addEventListener('deviceready', onDeviceReady, false);
 function onDeviceReady() {
-  var w = new whois(['apache.org@whois.pir.org']);
-  setTimeout(function () {
-    console.log(w.results);
-  }, 5000);
+  var w, success, err, queries;
+  queries = ['apache.org@whois.pir.org'];
+  success = function (results) {
+    console.log(results);
+  };
+  err = function (e) {
+    console.log('Error: ' + e);
+  };
+  w = new Whois();
+  p.whois(queries, success, err);
 }
 ```
 
@@ -55,32 +67,44 @@ You can perform multiple queries (here, a query to the whois server `whois.pir.o
 ```js
 document.addEventListener('deviceready', onDeviceReady, false);
 function onDeviceReady() {
-  var w = new whois(['ovh.fr@whois.nic.fr', 'apache.org@whois.pir.org']);
-  setTimeout(function () {
-    console.log(w.results);
-  }, 5000);
+  var w, success, err, queries;
+  queries = ['ovh.fr@whois.nic.fr', 'apache.org@whois.pir.org'];
+  success = function (results) {
+    console.log(results);
+  };
+  err = function (e) {
+    console.log('Error: ' + e);
+  };
+  w = new Whois();
+  p.whois(queries, success, err);
 }
 ```
 
-## Properties
+## Methods
 
-- whois.results
+- Whois.whois
 
-## whois.results
+## Whois.whois
 
-Get the results of the query.
+This method takes the following arguments:
 
-Results look like this:
+* queries: an array of queries (domain or domain@whois-server)
+* success: a callback function that handles success
+* err: a callback function that handles error
+
+The callback function for success takes one argument, which is a JSON array of results:
 
 ```json
 [
   {
-    "querystatus": "apache.org@whois.pir.org",
-    "whois": "success",
+    "query": "apache.org@whois.pir.org",
+    "status": "success",
     "result": "RESULT FROM WHOIS SERVER"
   }
 ]
 ```
+
+The callback function for error takes one argument, which is the error emitted.
 
 ### Supported Platforms
 

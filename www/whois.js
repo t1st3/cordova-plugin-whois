@@ -3,17 +3,25 @@ var utils = require('cordova/utils'),
   exec = require('cordova/exec'),
   cordova = require('cordova');
 
-function Whois (ipList) {
+function Whois () {
   this.results = null;
-  var self = this;
-  self.doWhois(ipList, function (info) {
-    self.results = info;
-  }, function (e) {
-    utils.alert('[ERROR] Error initializing Cordova: ' + e);
-  });
 }
 
-Whois.prototype.doWhois = function (ipList, successCallback, errorCallback) {
+Whois.prototype.whois = function (ipList, success, err) {
+  var successCallback, errorCallback, self;
+  self = this;
+  successCallback = function (r) {
+    self.results = r;
+    if (success && typeof success === 'function') {
+      success(r);
+    }
+  };
+  errorCallback = function (e) {
+    utils.alert('[ERROR] Error initializing Cordova: ' + e);
+    if (err && typeof err === 'function') {
+      err(e);
+    }
+  };
   exec(successCallback, errorCallback, "Whois", "getWhoisInfo", ipList);
 };
 

@@ -11,7 +11,7 @@
     <issue>https://github.com/t1st3/cordova-plugin-whois/issues</issue>
 
     <js-module src="www/whois.js" name="whois">
-      <clobbers target="whois" />
+      <clobbers target="Whois" />
     </js-module>
 
     <platform name="android">

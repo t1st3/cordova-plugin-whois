@@ -1,18 +1,29 @@
  
 exports.defineAutoTests = function () {
-  describe('Whois (window.whois)', function () {
+  describe('Whois (window.Whois)', function () {
     it('should exist', function (done) {
-      expect(window.whois).toBeDefined();
+      expect(window.Whois).toBeDefined();
       done();
     });
+  });
 
-    it('should contain a results specification that is an array', function (done) {
-      var p = new window.whois(['apache.org@whois.pir.org']);
-      setTimeout(function () {
-        expect(p.results).toBeDefined();
-        expect(p.results.length > 0).toBe(true);
+  describe('Success callback', function () {
+
+    it('should take an argument that is an array of results', function (done) {
+      var w, success, err;
+      w = new window.Whois();
+      success = function (r) {
+        expect(r).toBeDefined();
+        expect(r.length > 0).toBe(true);
+        expect(r[0].query).toBe('apache.org@whois.pir.org');
+        expect(r[0].status).toBe('success');
+        expect(typeof r[0].result).toBe('string');
         done();
-      }, 1000);
+      };
+      err = function (e) {
+        console.log(e);
+      };
+      w.whois(['apache.org@whois.pir.org'], success, err);
     });
   });
 };
