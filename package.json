@@ -12,9 +12,6 @@
     "type": "git",
     "url": "git+https://github.com/t1st3/cordova-plugin-whois.git"
   },
-  "bugs": {
-    "url": "https://github.com/t1st3/cordova-plugin-whois/issues"
-  },
   "keywords": [
     "cordova",
     "whois",
