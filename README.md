@@ -1,6 +1,8 @@
 
 # cordova-plugin-whois
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/t1st3/cordova-plugin-whois.svg)](https://greenkeeper.io/)
+
 [![NPM version](https://img.shields.io/npm/v/cordova-plugin-whois.svg)](https://www.npmjs.org/package/cordova-plugin-whois)
 
 This plugin implements the client side of the Internet Whois Protocol defined in [RFC 954](https://www.rfc-editor.org/rfc/rfc954.txt).
